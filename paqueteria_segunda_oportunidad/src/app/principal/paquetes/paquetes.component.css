@@ -1,0 +1,11 @@
+/*menu*/
+#menu a {
+    font-size:18;
+    font-weight:bold;
+    color: white;
+}
+
+#menu button {
+    font-size:18;
+    font-weight:bold; 
+}
