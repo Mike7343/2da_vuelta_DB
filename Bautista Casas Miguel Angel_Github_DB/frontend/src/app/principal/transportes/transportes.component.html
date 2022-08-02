@@ -1,0 +1,74 @@
+<div class="card">
+    <div class="card-body">
+        <form ngNativeValidate>
+            <div class="input-group">
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Tipo de transporte</label>
+                    <input [(ngModel)]="data.tp_transporte" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="Tipo de transporte" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Placas</label>
+                    <input [(ngModel)]="data.placas" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="placas" />
+                </div>
+
+
+
+            </div>
+            <div class="btn-group" role="group" aria-label="">
+
+                <button (click)="EjecutaPostDB()"  type="submit" class="btn btn-success">Agregar</button>
+                <section style="margin-left: 10px">
+                    <input type="reset" value="Borrar">
+                </section>
+                <section style="margin-left: 10px">
+                    <button (click)="EjecutaEditDB_2()"  type="button" class="btn btn-primary">Editar</button>
+                </section>
+                <!-- <button type="button" class="btn btn-primary">Cancelar</button> -->
+
+            </div>
+        </form>
+    </div>
+
+</div>
+<div class="card">
+    <div class="card-header">
+        <a class="btn btn-succes" routerLink="/rutas"> |</a>
+    </div>
+    <div class="card-body">
+        <h1> Lista de rutas </h1>
+        <a class="btn btn-info" (click)="ejecutaConsulta()">Aceptar</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo de transporte</th>
+                    <th>Placas</th>
+                    <th>Acciones</th>
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let i of lista ">
+                    <td>{{ i.id_tp_transporte }}</td>
+                    <td>{{ i.tp_transporte }}</td>
+                    <td>{{ i.placas }}</td>
+                   
+                    
+                    <td>
+                        <a (click)="EjecutaEditDB_1(i.id_tp_transporte)"  class="btn btn-info"> Editar </a> |
+                        <a  (click)="EjecutaDeleteDB(i.id_tp_transporte)" class="btn btn-danger" role="button">Borrar</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

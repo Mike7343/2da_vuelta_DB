@@ -1,0 +1,114 @@
+<div class="card">
+    <div class="card-body">
+        <form ngNativeValidate>
+            <div class="input-group">
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Nombre</label>
+                    <input [(ngModel)]="data.nombre" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="Nombre" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Apellido Paterno</label>
+                    <input [(ngModel)]="data.apellido_paterno" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="Apellido Paterno" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Apellido Materno</label>
+                    <input [(ngModel)]="data.apellido_materno" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="Apellido Materno" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Telefono</label>
+                    <input [(ngModel)]="data.telefono" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="Telefono" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">tipo de transporte</label>
+                    <input [(ngModel)]="data.fk_tp_transportes" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="tipo de transporte" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Ruta</label>
+                    <input [(ngModel)]="data.fk_rutas" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="Ruta" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Paquete</label>
+                    <input [(ngModel)]="data.fk_paquete" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="Paquete" />
+                </div>
+
+
+
+            </div>
+            <div class="btn-group" role="group" aria-label="">
+
+                <button (click)="EjecutaPostDB()"  type="submit" class="btn btn-success">Agregar</button>
+                <section style="margin-left: 10px">
+                    <input type="reset" value="Borrar">
+                </section>
+                <section style="margin-left: 10px">
+                    <button (click)="EjecutaEditDB_2()"  type="button" class="btn btn-primary">Editar</button>
+                </section>
+                <!-- <button type="button" class="btn btn-primary">Cancelar</button> -->
+
+            </div>
+        </form>
+    </div>
+
+</div>
+<div class="card">
+    <div class="card-header">
+        <a class="btn btn-succes" routerLink="/rutas"> |</a>
+    </div>
+    <div class="card-body">
+        <h1> Lista de rutas </h1>
+        <a class="btn btn-info" (click)="ejecutaConsulta()">Aceptar</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>nombre</th>
+                    <th>apellido paterno</th>
+                    <th>apellido materno</th>
+                    <th>telefono</th>
+                    <th>tipo de transporte</th>
+                    <th>nombre de la ruta</th>
+                    <th>contenido</th>
+                    <th>Acciones</th>
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let i of lista ">
+                    <td>{{ i.id_transportista }}</td>
+                    <td>{{ i.nombre }}</td>
+                    <td>{{ i.apellido_paterno }}</td>
+                    <td>{{ i.apellido_materno }}</td>
+                    <td>{{ i.telefono }}</td>
+                    <td>{{ i.tp_transporte }}</td>
+                    <td>{{ i.nombre_ruta }}</td>
+                    <td>{{ i.contenido }}</td>
+                   
+                    
+                    <td>
+                        <a (click)="EjecutaEditDB_1(i.id_transportista)"  class="btn btn-info"> Editar </a> |
+                        <a  (click)="EjecutaDeleteDB(i.id_transportista)" class="btn btn-danger" role="button">Borrar</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark" id="menu">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="assets/paquemex.jpg" alt="logo" height="80px" width="100px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Integra tu tienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="Paquemexinfo()">¿Por que paquemex?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="Guia()">Guia de Tansporte</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Paquetes -->
+    <div class="card">
+        <div class="card-body">
+            <form ngNativeValidate>
+                <div class="input-group">
+
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Nombre_cliente</label>
+                        <input [(ngModel)]="data.fk_clientes" [ngModelOptions]="{standalone: true}" required type="text"
+                            style="width: 300px" class="form-control" placeholder="nombre_cliente" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Envio</label>
+                        <input [(ngModel)]="data.fk_envios" [ngModelOptions]="{standalone: true}" required type="text"
+                            style="width: 300px" class="form-control" placeholder="nombre_cliente" />
+                    </div>
+
+                    <div class="mb-3">
+                        <section style="margin-left: 10px">
+                            <label for="" class="form-label">Contenido</label>
+                            <input [(ngModel)]="data.fk_tp_paquete" [ngModelOptions]="{standalone: true}" required
+                                type="text" style="width: 300px" class="form-control" placeholder="contenido">
+                        </section>
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <section style="margin-left: 10px">
+                            <label for="" class="form-label">Tipo pago</label>
+                            <input [(ngModel)]="data.fk_pago" [ngModelOptions]="{standalone: true}" required type="text"
+                                style="width: 300px" class="form-control" placeholder="tp_pago">
+                        </section>
+                    </div>
+
+                </div>
+                <div aria-label="">
+                    <a (click)="EjecutaPostDB()" type="submit" class="btn btn-success">Agregar</a> |
+                    <a (click)="EjecutaEditDB_2()" type="button" class="btn btn-primary">Editar</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <!--   Listar empleados -->
+    <div class="card">
+        <ul class="navbar-nav">
+            <div class="card-body">
+                <h1> Lista de Paquetes </h1>
+                <a class="btn btn-info" (click)="EjecutaGetDB()">Aceptar</a>
+            </div>
+        </ul>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id_paquete</th>
+                    <th>nombre_cliente</th>
+                    <th>dir_envio</th>
+                    <th>contenido</th>
+                    <th>tp_pago</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor=" let i of lista">
+                    <td>{{i.id_paquete}}</td>
+                    <td>{{i.nombre_cliente}}</td>
+                    <td>{{i.dir_envio}}</td>
+                    <td>{{i.contenido}}</td>
+                    <td>{{i.tp_pago}}</td>
+
+                    <td>
+                        <a class="btn btn-info" (click)="EjecutaEditDB_1(i.id_paquete)">Editar</a> |
+                        <a class="btn btn-info" (click)="EjecutaDeleteDB(i.id_paquete)">Eliminar</a>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

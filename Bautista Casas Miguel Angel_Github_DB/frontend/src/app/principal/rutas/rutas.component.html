@@ -1,0 +1,82 @@
+<div class="card">
+    <div class="card-body">
+        <form ngNativeValidate>
+            <div class="input-group">
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Nombre ruta</label>
+                    <input [(ngModel)]="data.nombre_ruta" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="nombre de ruta" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Direccion</label>
+                    <input [(ngModel)]="data.fk_direccion" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="id de direccion" />
+                </div>
+
+
+
+            </div>
+            <div class="btn-group" role="group" aria-label="">
+
+                <button (click)="EjecutaPostDBr()" type="submit" class="btn btn-success">Agregar</button>
+                <section style="margin-left: 10px">
+                    <input type="reset" value="Borrar">
+                </section>
+                <section style="margin-left: 10px">
+                    <button (click)="EjecutaEditDB_2()" type="button" class="btn btn-primary">Editar</button>
+                </section>
+                <!-- <button type="button" class="btn btn-primary">Cancelar</button> -->
+
+            </div>
+        </form>
+    </div>
+
+</div>
+<div class="card">
+    <div class="card-header">
+        <a class="btn btn-succes" routerLink="/rutas"> |</a>
+    </div>
+    <div class="card-body">
+        <h1> Lista de rutas </h1>
+        <a class="btn btn-info" (click)="ejecutaConsulta()">Aceptar</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Direccion</th>
+                    <th>Colonia</th>
+                    <th>Codigo Postal</th>
+                    <th>Municipio</th>
+                    <th>Estado</th>
+                    <th>Pais</th>
+                    <th>Acciones</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let i of lista ">
+                    <td>{{ i.id_ruta }}</td>
+                    <td>{{ i.nombre_ruta }}</td>
+                    <td>{{ i.direccion }}</td>
+                    <td>{{ i.Colonia }}</td>
+                    <td>{{ i.CodigoPostal }}</td>
+                    <td>{{ i.NombreMunicipio }}</td>
+                    <td>{{ i.NombreEstado}}</td>
+                    <td>{{ i.Pais }}</td>
+                    
+                    <td>
+                        <a (click)="EjecutaEditDB_1(i.id_ruta)" class="btn btn-info"> Editar </a> |
+                        <a (click)="EjecutaDeleteDB(i.id_ruta)" class="btn btn-danger" role="button">Borrar</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

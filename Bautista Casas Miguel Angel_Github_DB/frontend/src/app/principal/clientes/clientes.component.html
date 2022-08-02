@@ -1,0 +1,90 @@
+<div class="card">
+    <div class="card-body">
+        <form ngNativeValidate>
+            <div class="input-group">
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Nombre cliente</label>
+                    <input [(ngModel)]="data.nombre_cliente" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="nombre cliente" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Correo</label>
+                    <input [(ngModel)]="data.correo" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="Correo" />
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Telefono</label>
+                    <input [(ngModel)]="data.numero_cliente" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="Telefono" />
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Contraseña</label>
+                    <input [(ngModel)]="data.contrasena" [ngModelOptions]="{standalone: true}" required type="text"
+                        style="width: 300px" class="form-control" placeholder="Correo" />
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Confirmar Contraseña</label>
+                    <input [(ngModel)]="data.confirmar_contrasena" [ngModelOptions]="{standalone: true}" required
+                        type="text" style="width: 300px" class="form-control" placeholder="Correo" />
+                </div>
+
+
+
+            </div>
+            <div class="btn-group" role="group" aria-label="">
+
+                <button (click)="agregar()" type="submit" class="btn btn-success">Agregar</button>
+                <section style="margin-left: 10px">
+                    <input type="reset" value="Borrar">
+                </section>
+                <section style="margin-left: 10px">
+                    <button (click)="modificar_2()" type="button" class="btn btn-primary">Editar</button>
+                </section>
+                <!-- <button type="button" class="btn btn-primary">Cancelar</button> -->
+
+            </div>
+        </form>
+    </div>
+
+</div>
+<div class="container">
+    <p>Lista de Clientes</p>
+
+    <!-- <a class="btn btn-info" (click)="ListarCliente()">Aceptar</a> -->
+    <a class="btn btn-info" (click)="listarCliente()">Aceptar</a>
+    <table class="table" >
+       
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cliente Nombre</th>
+                <th>Correo</th>
+                <th>Numero Cliente</th>
+                <!-- <th>Eliminar</th> -->
+                <th>contraseña</th>
+                <th>Confirmacion de contraseña</th>
+                <th>Actividad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of ListarCliente">
+                <th>{{cliente.id_cliente}}</th>
+                
+                <td>{{cliente.nombre_cliente}}</td>
+                <td>{{cliente.correo}}</td>
+                <td>{{cliente.numero_cliente}}</td>
+                <td>{{cliente.contrasena}}</td>
+                <td>{{cliente.confirmar_contrasena}}</td>
+                <td>
+                    <button (click)="modificar(cliente.id_cliente)"type="button" class="btn btn-primary">Editar</button>
+                </td>
+                <td>
+                    <button (click)="eliminar(cliente.id_cliente)" type="button"
+                        class="btn btn-danger">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
